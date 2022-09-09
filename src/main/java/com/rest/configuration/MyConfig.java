@@ -62,7 +62,7 @@ public class MyConfig {
         // Указываем источник данных
         sessionFactoryBean.setDataSource(dataSource());
         // Устанавливаем пакет в котором будут искаться entity-сущности
-        sessionFactoryBean.setPackagesToScan("com.rest.com.rest.entity");
+        sessionFactoryBean.setPackagesToScan("com.rest.entity");
         // Нам необходимо установить диалект SQL и вывод команд в консоль, делать это
         // мы будем с помощью класса Properties пакета java.util. Этот класс наследник
         // HashTable и в нем свойства хранятся строкой в паре ключ-значение.
