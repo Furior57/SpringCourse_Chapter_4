@@ -4,10 +4,7 @@ import com.rest.entity.Employee;
 import com.rest.service.exceptionHandling.NoSuchEmployeeException;
 import com.rest.service.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 // В этот раз мы пометим контроллер необычной для нас аннотацией @RestController
@@ -95,5 +92,16 @@ public class MyRestController {
 //        data.setInfo(e.getMessage());
 //        return new ResponseEntity<>(data, HttpStatus.BAD_REQUEST);
 //    }
+    // Теперь мы определяем метод, который будет реагировать на POST запросы на адрес /employees
+    // Как нам получить информацию о работнике из запроса? Очень просто:
+    // @RequestBody - этой аннотацией мы получаем тело запроса, а так как там json
+    // с описанием работника, то мы можем этот json сразу присвоить объекту Employee,
+    // в этом нам поможет jackson. Далее все элементарно, добавляем его в базу, возвращаем
+    // этот же объект в ответе, после сохранения в базе данных у него появится поле id.
+    @PostMapping("/employees")
+    public Employee addNewEmployee(@RequestBody Employee employee) {
+        service.saveEmployee(employee);
+        return employee;
+    }
 
 }
