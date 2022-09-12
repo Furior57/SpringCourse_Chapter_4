@@ -1,12 +1,13 @@
 package com.rest.controller;
 
 import com.rest.entity.Employee;
+import com.rest.service.exceptionHandling.EmployeeIncorrectData;
+import com.rest.service.exceptionHandling.NoSuchEmployeeException;
 import com.rest.service.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 // В этот раз мы пометим контроллер необычной для нас аннотацией @RestController
@@ -46,7 +47,53 @@ public class MyRestController {
     // нам одного работника по его id, а jackson переводит это все в json./
     @GetMapping("/employees/{id}")
     public Employee getEmployee(@PathVariable int id) {
-        return service.getEmployee(id);
+        Employee employee = service.getEmployee(id);
+        // Сделаем проверку на то, нашелся ли нужный работник, если нет, то нам необходимо
+        // выбросить исключение, мы создадим это исключение в пакете exceptionHandling
+        // и назовем NoSuchEmployeeException, перейдем в этот класс.
+        // Теперь нам необходимо возбудить исключение и передать в него сообщение.
+        // Смотрим ниже как это делается.
+        if (employee == null) {
+            // Здесь мы создали исключение и передали в него сообщение.
+            throw new NoSuchEmployeeException("There is no employee with id=" +
+                    id + " in database");
+            // Теперь нам необходимо обработать исключение и передать в браузер json
+            // с его описанием. Для этого здесь, в контроллере мы создадим отдельный метод,
+            // который и будет обрабатывать исключения, назовем его handleException и
+            // перейдем к нему.
+        }
+
+        return employee;
+    }
+
+    // Методы обрабатывающие исключения помечаются аннотацией @ExceptionHandler.
+    // Возвращать мы будем объект ResponseEntity<T>, это класс наследник класса HTTPEntity,
+    // который позволяет формировать HTTP запрос или ответ. Содержит в себе
+    // хедер и тело. Нас сейчас интересует наследник этого класса, отвечающий за
+    // формирование ответа. Это параметризируемый класс и мы укажем что он работает
+    // с нашим классом EmployeeIncorrectData, этот класс передастся в тело ответа.
+    // В итоге наших манипуляций jackson сериализует объект EmployeeIncorrectData в json мы его
+    // вернем в ответе.
+    // Аргументом передадим выброшенное исключение из которого получаем сообщение и
+    // передаем в конструктор класса EmployeeIncorrectData, затем возвращаем объект
+    // ResponseEntity, внутрь передадим сообщение об ошибке и http статус.
+    @ExceptionHandler
+    public ResponseEntity<EmployeeIncorrectData> handleException(NoSuchEmployeeException e) {
+        EmployeeIncorrectData data = new EmployeeIncorrectData();
+        data.setInfo(e.getMessage());
+        return new ResponseEntity<>(data, HttpStatus.NOT_FOUND);
+    }
+    // Теперь нам необходимо обработать случай, когда вместо числа для id мы передадим строку,
+    // создадим еще один метод, этот метод будет работать вообще на все исключения.
+    // Делается он аналогично первому случаю. Название метода оставим такое же, просто
+    // перегрузим его. Аргументом передаем объект класса Exception и больше ничего не меняем.
+    // Так же создается объект класса EmployeeIncorrectData в который мы запишем сообщение
+    // полученное от исключения. В статусе вернем ошибку 400 «ошибка запроса»./
+    @ExceptionHandler
+    public ResponseEntity<EmployeeIncorrectData> handleException(Exception e) {
+        EmployeeIncorrectData data = new EmployeeIncorrectData();
+        data.setInfo(e.getMessage());
+        return new ResponseEntity<>(data, HttpStatus.BAD_REQUEST);
     }
 
 }
