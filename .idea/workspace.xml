@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2306d44-0fcd-4017-ade5-b6349244c2e7" name="Changes" comment="12.09.22 SpringREST_GET/api/employees/{id}">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rest/Lesson_60_ExceptionHandling.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rest/service/exceptionHandling/EmployeeIncorrectData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rest/service/exceptionHandling/NoSuchEmployeeException.java" afterDir="false" />
+    <list default="true" id="d2306d44-0fcd-4017-ade5-b6349244c2e7" name="Changes" comment="12.09.22 SpringREST_ExceptionHandling">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rest/Lesson_61_GlobalExceptionHandling.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rest/controller/MyRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rest/controller/MyRestController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +163,7 @@
       <updated>1662707271607</updated>
       <workItem from="1662707273521" duration="918000" />
       <workItem from="1662711158121" duration="1190000" />
-      <workItem from="1662713898350" duration="13183000" />
+      <workItem from="1662713898350" duration="15109000" />
     </task>
     <task id="LOCAL-00001" summary="09.09.22 SpringREST_reconfiguration(lesson_57)">
       <created>1662711534311</created>
@@ -189,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662962043798</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="12.09.22 SpringREST_ExceptionHandling">
+      <created>1662975301245</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1662975301245</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +215,7 @@
     <MESSAGE value="09.09.22 SpringREST_reconfiguration(lesson_57)" />
     <MESSAGE value="09.09.22 SpringREST_GET/api/employees" />
     <MESSAGE value="12.09.22 SpringREST_GET/api/employees/{id}" />
-    <option name="LAST_COMMIT_MESSAGE" value="12.09.22 SpringREST_GET/api/employees/{id}" />
+    <MESSAGE value="12.09.22 SpringREST_ExceptionHandling" />
+    <option name="LAST_COMMIT_MESSAGE" value="12.09.22 SpringREST_ExceptionHandling" />
   </component>
 </project>
