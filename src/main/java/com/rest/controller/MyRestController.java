@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 // В этот раз мы пометим контроллер необычной для нас аннотацией @RestController
 // Она говорит о том, что данный контроллер управляет REST запросами и ответами.
 // Теперь мы перейдем в наш старый проект и скопируем из него entity, dao и services,
@@ -20,6 +21,7 @@ public class MyRestController {
     // Определим объект интерфейса EmployeeService, с его помощью мы будем работать в БД
     @Autowired
     private EmployeeService service;
+
     // Теперь определим метод которым мы будем получать всех работников, ранее в таблице
     // мы описывали URL для этого метода, вызываться он будет по адресу GET/api/employees.
     // Внутри все просто, кладем в список результат работы метода getAllEmployees() нашего сервиса.
@@ -103,11 +105,23 @@ public class MyRestController {
         service.saveEmployee(employee);
         return employee;
     }
+
     // Изменение существующего работника./
     @PutMapping("/employees")
     public Employee updateEmployee(@RequestBody Employee employee) {
         service.saveEmployee(employee);
         return employee;
+    }
+    // Удаление работника
+    @DeleteMapping("/employees/{id}")
+    public String deleteEmployee(@PathVariable int id) {
+        Employee employee = service.getEmployee(id);
+        if (employee == null) {
+            throw new NoSuchEmployeeException("There is no employee with id=" +
+                    id + " in database");
+        } else service.deleteEmployee(id);
+
+        return "Employee with ID="+id+" was deleted.";
     }
 
 }
