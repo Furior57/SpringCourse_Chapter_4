@@ -9,8 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2306d44-0fcd-4017-ade5-b6349244c2e7" name="Changes" comment="12.09.22 SpringREST_GlobalExceptionHandling">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rest/Lesson_62_addNewEmployee.java" afterDir="false" />
+    <list default="true" id="d2306d44-0fcd-4017-ade5-b6349244c2e7" name="Changes" comment="12.09.22 SpringREST_POST/api/employees">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rest/Lesson_63_UpdateEmployee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rest/controller/MyRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rest/controller/MyRestController.java" afterDir="false" />
     </list>
@@ -164,7 +164,7 @@
       <updated>1662707271607</updated>
       <workItem from="1662707273521" duration="918000" />
       <workItem from="1662711158121" duration="1190000" />
-      <workItem from="1662713898350" duration="17009000" />
+      <workItem from="1662713898350" duration="20364000" />
     </task>
     <task id="LOCAL-00001" summary="09.09.22 SpringREST_reconfiguration(lesson_57)">
       <created>1662711534311</created>
@@ -201,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662980832858</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="12.09.22 SpringREST_POST/api/employees">
+      <created>1662987883628</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1662987883628</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,6 +232,7 @@
     <MESSAGE value="12.09.22 SpringREST_GET/api/employees/{id}" />
     <MESSAGE value="12.09.22 SpringREST_ExceptionHandling" />
     <MESSAGE value="12.09.22 SpringREST_GlobalExceptionHandling" />
-    <option name="LAST_COMMIT_MESSAGE" value="12.09.22 SpringREST_GlobalExceptionHandling" />
+    <MESSAGE value="12.09.22 SpringREST_POST/api/employees" />
+    <option name="LAST_COMMIT_MESSAGE" value="12.09.22 SpringREST_POST/api/employees" />
   </component>
 </project>

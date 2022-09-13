@@ -103,5 +103,11 @@ public class MyRestController {
         service.saveEmployee(employee);
         return employee;
     }
+    // Изменение существующего работника./
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee employee) {
+        service.saveEmployee(employee);
+        return employee;
+    }
 
 }
